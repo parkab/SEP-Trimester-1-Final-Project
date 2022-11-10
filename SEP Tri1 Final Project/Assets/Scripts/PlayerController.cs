@@ -26,26 +26,25 @@ public class PlayerController : MonoBehaviour
         transform.Translate(Vector2.right * Time.deltaTime * speed * horizontalInput);
         transform.Translate(Vector2.up * Time.deltaTime * speed * verticalInput);
 
+        // animation direction setters
         animator.SetFloat("Down_speed", verticalInput);
         animator.SetFloat("Up_speed", verticalInput);
         animator.SetFloat("Left_speed", horizontalInput);
         animator.SetFloat("Right_speed", horizontalInput);
 
+        // setting player movement range (within the island)
         if (transform.position.x < -range)
         {
             transform.position = new Vector2(-range, transform.position.y);
         }
-
         if (transform.position.x > range)
         {
             transform.position = new Vector2(range, transform.position.y);
         }
-
         if (transform.position.y < -range)
         {
             transform.position = new Vector2(transform.position.x, -range);
         }
-
         if (transform.position.y > range)
         {
             transform.position = new Vector2(transform.position.x, range);
