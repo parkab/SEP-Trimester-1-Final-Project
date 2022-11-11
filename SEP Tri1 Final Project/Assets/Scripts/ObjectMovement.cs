@@ -28,7 +28,7 @@ public class ObjectMovement : MonoBehaviour
         }
 
         // randomize angle and speed
-        speedX = Random.Range(20, 100) * Time.deltaTime * speed;
+        speedX = Random.Range(50, 100) * Time.deltaTime * speed;
         speedY = Random.Range(-100, 100) * Time.deltaTime * speed;
     }
 
