@@ -7,8 +7,8 @@ public class SpawnManager : MonoBehaviour
 
     public GameObject[] objectPrefabs;
 
-    private float startDelay = 2;
-    private float spawnInterval = 1.5f;
+    private float startDelay = 1;
+    private float spawnInterval = 1;
 
     private float spawnPosX = 12.5f;
     public float randX;
