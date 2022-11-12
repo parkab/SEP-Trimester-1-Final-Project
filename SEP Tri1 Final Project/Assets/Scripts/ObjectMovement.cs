@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class ObjectMovement : MonoBehaviour
 {
+    private GameManager gameManager;
 
+    public int pointValue;
     private float speed = .1f;
     private float speedX;
     private float speedY;
@@ -17,6 +19,8 @@ public class ObjectMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
         // determine which side the object spawned on
         if (transform.position.x < 0)
         {
@@ -58,6 +62,14 @@ public class ObjectMovement : MonoBehaviour
         if ((spawnLeft && transform.position.x > rightBound) || (!spawnLeft && transform.position.x < leftBound))
         {
             Destroy(gameObject);
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+            gameManager.UpdateScore(pointValue);
         }
     }
 }
