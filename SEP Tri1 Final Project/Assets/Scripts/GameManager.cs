@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
         UpdateScore(0);
 
         //titleScreen.gameObject.SetActive(false);
+        //
     }
 
     IEnumerator SpawnTarget()
