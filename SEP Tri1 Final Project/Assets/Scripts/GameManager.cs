@@ -41,8 +41,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        isGameActive = true;
-        StartGame(1);
+        //isGameActive = true;
+        //StartGame(1);
     }
 
     // Update is called once per frame
@@ -61,13 +61,16 @@ public class GameManager : MonoBehaviour
 
     public void StartGame(int difficulty)
     {
-        isGameActive = true;
-        timer = 30;
-        score = 0;
-        spawnRate /= difficulty;
+        if (difficulty <= 3)
+        {
+            isGameActive = true;
+            timer = 30;
+            score = 0;
+            spawnRate /= difficulty;
 
-        StartCoroutine(SpawnTarget());
-        UpdateScore(0);
+            StartCoroutine(SpawnTarget());
+            UpdateScore(0);
+        }
 
         //titleScreen.gameObject.SetActive(false);
         //
