@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
 
     private int score;
     private float timer;
+    private int difficulty;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI timerText;
     //public TextMeshProUGUI gameOverText;
@@ -51,26 +52,41 @@ public class GameManager : MonoBehaviour
         if (isGameActive)
         {
             timerText.SetText("Time: " + Mathf.Round(timer));
-            timer -= Time.deltaTime;
-            if (timer <= 0)
+            if (difficulty <= 3)
             {
-                GameOver();
+                timer -= Time.deltaTime;
+                if (timer <= 0)
+                {
+                    GameOver();
+                }
+            }
+            if (difficulty == 4)
+            {
+                timer += Time.deltaTime;
             }
         }
     }
 
-    public void StartGame(int difficulty)
+    public void StartGame(int diff)
     {
+        difficulty = diff;
+
+        isGameActive = true;
+        score = 0;
+
         if (difficulty <= 3)
         {
-            isGameActive = true;
             timer = 30;
-            score = 0;
             spawnRate /= difficulty;
-
-            StartCoroutine(SpawnTarget());
-            UpdateScore(0);
         }
+        if (difficulty == 4)
+        {
+            timer = 0;
+            spawnRate = 1.0f;
+        }
+
+        StartCoroutine(SpawnTarget());
+        UpdateScore(0);
 
         //titleScreen.gameObject.SetActive(false);
         //
@@ -99,6 +115,11 @@ public class GameManager : MonoBehaviour
 
             // spawn object
             Instantiate(objectPrefabs[objectIndex], spawnPos, objectPrefabs[objectIndex].transform.rotation);
+
+            if (difficulty == 4)
+            {
+                spawnRate -= 0.1f;
+            }
         }
     }
 
