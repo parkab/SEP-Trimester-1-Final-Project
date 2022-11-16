@@ -12,8 +12,9 @@ public class GameManager : MonoBehaviour
 
     public List<GameObject> objectPrefabs;
     public List<GameObject> hearts;
-    // private float startDelay = 1;
+    public GameObject titleScreen;
 
+    // private float startDelay = 1;
     private int lives = 3;
     private float spawnRate = 1.0f;
 
@@ -24,9 +25,13 @@ public class GameManager : MonoBehaviour
     private int score;
     private float timer;
     private int difficulty;
+
+    public bool isGameActive;
+    public Button restartButton;
+
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI timerText;
-    //public TextMeshProUGUI gameOverText;
+    public TextMeshProUGUI gameOverText;
 
     private void Awake(){
         if (_instance != null && _instance != this)
@@ -37,16 +42,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public bool isGameActive;
-    //public Button restartButton;
-
-    public GameObject titleScreen;
-
     // Start is called before the first frame update
     void Start()
     {
-        //isGameActive = true;
-        //StartGame(1);
+
     }
 
     // Update is called once per frame
@@ -66,6 +65,7 @@ public class GameManager : MonoBehaviour
             if (difficulty == 4)
             {
                 timer += Time.deltaTime;
+                spawnRate -= 0.01f * Time.deltaTime;
             }
         }
     }
@@ -117,11 +117,6 @@ public class GameManager : MonoBehaviour
 
             // spawn object
             Instantiate(objectPrefabs[objectIndex], spawnPos, objectPrefabs[objectIndex].transform.rotation);
-
-            if (difficulty == 4)
-            {
-                spawnRate -= 0.1f;
-            }
         }
     }
 
@@ -144,8 +139,8 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         isGameActive = false;
-        //gameOverText.gameObject.SetActive(true);
-        //restartButton.gameObject.SetActive(true);
+        gameOverText.gameObject.SetActive(true);
+        restartButton.gameObject.SetActive(true);
     }
     public void RestartGame()
     {

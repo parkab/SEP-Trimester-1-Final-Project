@@ -32,34 +32,36 @@ public class ObjectMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gameManager.isGameActive)
+        {
+            // object movement
+            if (spawnLeft)
+            {
+                //transform.Translate(Vector2.right * Time.deltaTime * speed);
+                transform.Translate(speedX, speedY, 0);
+            }
+            else
+            {
+                //transform.Translate(Vector2.left * Time.deltaTime * speed);
+                transform.Translate(-speedX, speedY, 0);
+            }
 
-        // object movement
-        if (spawnLeft)
-        {
-            //transform.Translate(Vector2.right * Time.deltaTime * speed);
-            transform.Translate(speedX, speedY, 0);
-        }
-        else
-        {
-            //transform.Translate(Vector2.left * Time.deltaTime * speed);
-            transform.Translate(-speedX, speedY, 0);
-        }
+            // lets objects bounce off top and bottom walls
+            if ((transform.position.y < -verticalBound) || (transform.position.y > verticalBound))
+            {
+                speedY = -speedY;
+            }
 
-        // lets objects bounce off top and bottom walls
-        if ((transform.position.y < -verticalBound) || (transform.position.y > verticalBound))
-        {
-            speedY = -speedY;
-        }
-
-        // destroy object out of bounds
-        if ((spawnLeft && transform.position.x > rightBound) || (!spawnLeft && transform.position.x < leftBound))
-        {
-            Destroy(gameObject);
+            // destroy object out of bounds
+            if ((spawnLeft && transform.position.x > rightBound) || (!spawnLeft && transform.position.x < leftBound))
+            {
+                Destroy(gameObject);
+            }
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && gameManager.isGameActive)
         {
             if (gameObject.CompareTag("Food"))
             {
