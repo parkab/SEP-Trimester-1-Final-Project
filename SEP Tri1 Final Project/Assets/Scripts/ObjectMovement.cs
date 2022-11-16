@@ -21,15 +21,8 @@ public class ObjectMovement : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
-        // determine which side the object spawned on
-        if (transform.position.x < 0)
-        {
-            spawnLeft = true;
-        }
-        else
-        {
-            spawnLeft = false;
-        }
+        // determine which side the object spawned
+        spawnLeft = transform.position.x < 0;
 
         // randomize angle and speed
         speedX = Random.Range(50, 100) * Time.deltaTime * speed;
@@ -68,8 +61,22 @@ public class ObjectMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Destroy(gameObject);
-            gameManager.UpdateScore(pointValue);
+            if (gameObject.CompareTag("Food"))
+            {
+                Debug.Log("Food");
+                Destroy(gameObject);
+                gameManager.UpdateScore(pointValue);
+            }
+            if (gameObject.CompareTag("Rock"))
+            {
+                //Debug.Log("ROCK");
+                Destroy(gameObject);
+                gameManager.UpdateLives();
+            }
+
         }
+        // zaman blessing
+        bool dominance = true;
+        Debug.Assert(dominance);
     }
 }

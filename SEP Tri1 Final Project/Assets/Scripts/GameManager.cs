@@ -11,7 +11,10 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get { return _instance; } }
 
     public List<GameObject> objectPrefabs;
+    public List<GameObject> hearts;
     // private float startDelay = 1;
+
+    private int lives = 3;
     private float spawnRate = 1.0f;
 
     private float spawnPosX = 12.5f;
@@ -37,7 +40,7 @@ public class GameManager : MonoBehaviour
     public bool isGameActive;
     //public Button restartButton;
 
-    //public GameObject titleScreen;
+    public GameObject titleScreen;
 
     // Start is called before the first frame update
     void Start()
@@ -88,8 +91,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(SpawnTarget());
         UpdateScore(0);
 
-        //titleScreen.gameObject.SetActive(false);
-        //
+        titleScreen.gameObject.SetActive(false);
     }
 
     IEnumerator SpawnTarget()
@@ -127,6 +129,17 @@ public class GameManager : MonoBehaviour
     {
         score += scoreToAdd;
         scoreText.text = "Score: " + score;
+    }
+    public void UpdateLives()
+    {
+        lives -= 1;
+        hearts[lives].SetActive(false);
+        Debug.Log(lives);
+
+        if (lives == 0)
+        {
+            GameOver();
+        }
     }
     public void GameOver()
     {
