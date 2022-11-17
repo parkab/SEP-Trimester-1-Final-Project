@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
 
     private int score;
     private float timer;
-    private int difficulty;
+    private int diff;
 
     public bool isGameActive;
     public Button restartButton;
@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
         if (isGameActive)
         {
             timerText.SetText("Time: " + Mathf.Round(timer));
-            if (difficulty <= 3)
+            if (diff <= 3)
             {
                 timer -= Time.deltaTime;
                 if (timer <= 0)
@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
                     GameOver();
                 }
             }
-            if (difficulty == 4)
+            if (diff == 4)
             {
                 timer += Time.deltaTime;
                 spawnRate -= 0.01f * Time.deltaTime;
@@ -72,17 +72,17 @@ public class GameManager : MonoBehaviour
 
     public void StartGame(int diff)
     {
-        difficulty = diff;
+        diff = diff;
 
         isGameActive = true;
         score = 0;
 
-        if (difficulty <= 3)
+        if (diff <= 3)
         {
             timer = 30;
-            spawnRate /= difficulty;
+            spawnRate /= diff;
         }
-        if (difficulty == 4)
+        if (diff == 4)
         {
             timer = 0;
             spawnRate = 1.0f;
