@@ -7,9 +7,6 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager _instance;
-    public static GameManager Instance { get { return _instance; } }
-
     public List<GameObject> objectPrefabs;
     public List<GameObject> hearts;
     public GameObject titleScreen;
@@ -32,6 +29,9 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI gameOverText;
+
+    private static GameManager _instance;
+    public static GameManager Instance { get { return _instance; } }
 
     private void Awake(){
         if (_instance != null && _instance != this)
