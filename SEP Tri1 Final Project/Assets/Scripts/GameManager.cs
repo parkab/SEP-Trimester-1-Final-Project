@@ -81,12 +81,8 @@ public class GameManager : MonoBehaviour
     public void StartGame(int difficulty)
     {
         gameDifficulty = (Level)difficulty;
-
         isGameActive = true;
         score = 0;
-
-        Debug.Log(gameDifficulty);
-        Debug.Log((int)Level.Endless);
 
         if (gameDifficulty == Level.Endless)
         {
@@ -96,7 +92,7 @@ public class GameManager : MonoBehaviour
         else if (gameDifficulty != Level.Endless)
         {
             timer = 30;
-            spawnRate /= difficulty;
+            spawnRate /= (int)gameDifficulty;
         }
 
         StartCoroutine(SpawnTarget());
