@@ -9,18 +9,10 @@ public class DifficultyButton : MonoBehaviour
     private Button button;
     public GameManager gameManager;
     public int difficulty;
-    enum Diff {
-        Low,
-        Medium,
-        High, 
-        Endless
-    }
-    Diff diff;
 
     // Start is called before the first frame update
     void Start()
     {
-        diff = (Diff)difficulty;
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         button = GetComponent<Button>();
         button.onClick.AddListener(SetDifficulty);
@@ -35,6 +27,6 @@ public class DifficultyButton : MonoBehaviour
     void SetDifficulty()
     {
         Debug.Log(gameObject.name + " was clicked");
-        gameManager.StartGame(diff);
+        gameManager.StartGame(difficulty);
     }
 }
