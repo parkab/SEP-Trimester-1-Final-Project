@@ -23,13 +23,13 @@ public class GameManager : MonoBehaviour
     private float timer;
     private int difficulty;
 
-    enum GameDifficulty {
-        Low,
-        Medium,
-        High, 
-        Endless
+    enum Level {
+        Low = 1,
+        Medium = 2,
+        High = 3, 
+        Endless = 4
     }
-    GameDifficulty gameDifficulty;
+    Level gameDifficulty;
 
     public bool isGameActive;
     public Button restartButton;
@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
         if (isGameActive)
         {
             timerText.SetText("Time: " + Mathf.Round(timer));
-            if (gameDifficulty != GameDifficulty.Endless)
+            if (gameDifficulty != Level.Endless)
             {
                 timer -= Time.deltaTime;
                 if (timer <= 0)
@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
                     GameOver();
                 }
             }
-            if (gameDifficulty == GameDifficulty.Endless)
+            if (gameDifficulty == Level.Endless)
             {
                 timer += Time.deltaTime;
                 spawnRate -= 0.01f * Time.deltaTime;
@@ -80,20 +80,23 @@ public class GameManager : MonoBehaviour
 
     public void StartGame(int difficulty)
     {
-        gameDifficulty = (GameDifficulty)difficulty;
+        gameDifficulty = (Level)difficulty;
 
         isGameActive = true;
         score = 0;
 
-        if (gameDifficulty != GameDifficulty.Endless)
-        {
-            timer = 30;
-            spawnRate /= difficulty;
-        }
-        if (gameDifficulty == GameDifficulty.Endless)
+        Debug.Log(gameDifficulty);
+        Debug.Log((int)Level.Endless);
+
+        if (gameDifficulty == Level.Endless)
         {
             timer = 0;
             spawnRate = 1.0f;
+        }
+        else if (gameDifficulty != Level.Endless)
+        {
+            timer = 30;
+            spawnRate /= difficulty;
         }
 
         StartCoroutine(SpawnTarget());
