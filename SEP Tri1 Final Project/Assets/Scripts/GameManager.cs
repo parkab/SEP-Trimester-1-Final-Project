@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI gameOverText;
+    public ParticleSystem redExplosionParticle;
 
     private static GameManager _instance;
     public static GameManager Instance { get { return _instance; } }
@@ -136,7 +137,8 @@ public class GameManager : MonoBehaviour
     {
         lives -= 1;
         hearts[lives].SetActive(false);
-        Debug.Log(lives);
+        //Instantiate(redExplosionParticle, hearts[lives].transform.position, redExplosionParticle.transform.rotation);
+        Debug.Log("Lives: " + lives);
 
         if (lives == 0)
         {

@@ -5,6 +5,7 @@ using UnityEngine;
 public class ObjectMovement : MonoBehaviour
 {
     private GameManager gameManager;
+    public ParticleSystem redExplosionParticle;
 
     public int pointValue;
     private float speed = .1f;
@@ -74,6 +75,7 @@ public class ObjectMovement : MonoBehaviour
                 //Debug.Log("ROCK");
                 Destroy(gameObject);
                 gameManager.UpdateLives();
+                //Instantiate(redExplosionParticle, transform.position, redExplosionParticle.transform.rotation);
             }
 
         }
