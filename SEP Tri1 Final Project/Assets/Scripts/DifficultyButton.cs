@@ -25,7 +25,7 @@ public class DifficultyButton : MonoBehaviour
     }
 
     delegate void MyDelegate(int num);
-    MyDelegate myDelegate;
+    MyDelegate weDelegateYouToStartTheGame;
 
     void SetDifficulty()
     {
