@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> objectPrefabs;
     public List<GameObject> hearts;
     public GameObject titleScreen;
+    public GameObject player;
 
     // private float startDelay = 1;
     private int lives = 3;
@@ -38,6 +39,9 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI gameOverText;
     public ParticleSystem redExplosionParticle;
+    public ParticleSystem greyExplosionParticle;
+    public ParticleSystem pinkExplosionParticle;
+    public ParticleSystem goldExplosionParticle;
 
     private static GameManager _instance;
     public static GameManager Instance { get { return _instance; } }
@@ -54,7 +58,10 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        redExplosionParticle.Stop();
+        greyExplosionParticle.Stop();
+        pinkExplosionParticle.Stop();
+        goldExplosionParticle.Stop();
     }
 
     // Update is called once per frame
@@ -128,16 +135,43 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    IEnumerator PlayParticle(ParticleSystem particle, bool isObject)
+    {
+        if (isObject)
+        {
+            particle.transform.position = player.transform.position;
+        }
+        else
+        {
+            particle.transform.position = hearts[lives].transform.position;
+        }
+        particle.Play();
+        yield return new WaitForSeconds(0.1f);
+        particle.Stop();
+    }
+
     public void UpdateScore(int scoreToAdd)
     {
         score += scoreToAdd;
         scoreText.text = "Score: " + score;
+
+        if (scoreToAdd == 5)
+            StartCoroutine(PlayParticle(redExplosionParticle, true));
+        if (scoreToAdd == 10)
+            StartCoroutine(PlayParticle(pinkExplosionParticle, true));
+        if (scoreToAdd == 20)
+            StartCoroutine(PlayParticle(goldExplosionParticle, true));
     }
+
     public void UpdateLives()
     {
         lives -= 1;
         hearts[lives].SetActive(false);
+
         //Instantiate(redExplosionParticle, hearts[lives].transform.position, redExplosionParticle.transform.rotation);
+        StartCoroutine(PlayParticle(redExplosionParticle, false));
+        StartCoroutine(PlayParticle(greyExplosionParticle, true));
+
         Debug.Log("Lives: " + lives);
 
         if (lives == 0)

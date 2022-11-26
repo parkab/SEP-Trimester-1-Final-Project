@@ -28,6 +28,8 @@ public class ObjectMovement : MonoBehaviour
         // randomize angle and speed
         speedX = Random.Range(50, 100) * Time.deltaTime * speed;
         speedY = Random.Range(-100, 100) * Time.deltaTime * speed;
+
+        redExplosionParticle.Stop();
     }
 
     // Update is called once per frame
@@ -73,9 +75,13 @@ public class ObjectMovement : MonoBehaviour
             if (gameObject.CompareTag("Rock"))
             {
                 //Debug.Log("ROCK");
+                //objectPos = gameObject.transform.position;
+                //redExplosionParticle.Play();
+                //redExplosionParticle.Stop();
+                //StartCoroutine(PlayParticle());
+
                 Destroy(gameObject);
                 gameManager.UpdateLives();
-                //Instantiate(redExplosionParticle, transform.position, redExplosionParticle.transform.rotation);
             }
 
         }

@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Food
   - Rock
+  - Ice Cream
+  - Fries
+  - Apple
   layers:
   - Default
   - TransparentFX

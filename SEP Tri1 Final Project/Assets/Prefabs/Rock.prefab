@@ -1305,7 +1305,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.46274513, g: 0.454902, b: 0.4901961, a: 1}
+        key0: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
         key1: {r: 0.46274513, g: 0.454902, b: 0.4901961, a: 0}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
@@ -4911,7 +4911,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 152e641a3dc04784187dc483350b13fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  redExplosionParticle: {fileID: 2227512160382582613, guid: 6c045013f6620114dbd8f6eefc77a766, type: 3}
+  redExplosionParticle: {fileID: 7653870972037844085, guid: 6c045013f6620114dbd8f6eefc77a766, type: 3}
   pointValue: 0
 --- !u!61 &8378656767127694597
 BoxCollider2D:
