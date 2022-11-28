@@ -31,7 +31,7 @@ public class DifficultyButton : MonoBehaviour
     void SetDifficulty()
     {
         //Debug.Log(gameObject.name + " was clicked");
-        Debug.Log(gameObject.name + " was clicked. " + "Difficulty: " + "Spawn Rate: " + spawnRate.spawnRate);
+        Debug.Log(gameObject.name + " was clicked. " + "\nDifficulty: " + spawnRate.difficultyLevel +  "\nSpawn Rate: " + spawnRate.spawnRate +"\n");
         weDelegateYouToStartTheGame = gameManager.StartGame; 
         weDelegateYouToStartTheGame(spawnRate.difficultyLevel, spawnRate.spawnRate);
     }
