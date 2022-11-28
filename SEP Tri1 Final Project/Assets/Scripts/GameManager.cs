@@ -86,21 +86,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void StartGame(int difficulty)
+    public void StartGame(int difficulty, float diffSpawnRate)
     {
         gameDifficulty = (Level)difficulty;
         isGameActive = true;
         score = 0;
+        spawnRate = diffSpawnRate;
 
         if (gameDifficulty == Level.Endless)
         {
             timer = 0;
-            spawnRate = 1.0f;
         }
         else if (gameDifficulty != Level.Endless)
         {
             timer = 30;
-            spawnRate /= (int)gameDifficulty;
         }
 
         StartCoroutine(SpawnTarget());

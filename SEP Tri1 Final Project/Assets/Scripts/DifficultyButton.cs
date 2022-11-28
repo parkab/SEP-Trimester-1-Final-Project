@@ -8,11 +8,12 @@ public class DifficultyButton : MonoBehaviour
 
     private Button button;
     public GameManager gameManager;
-    public int difficulty;
+    public SpawnRate spawnRate;
 
     // Start is called before the first frame update
     void Start()
     {
+        //Debug.Log("Difficulty: " + "Spawn Rate: " + 1.0f / spawnRate.spawnRate);
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         button = GetComponent<Button>();
         button.onClick.AddListener(SetDifficulty);
@@ -24,13 +25,14 @@ public class DifficultyButton : MonoBehaviour
         
     }
 
-    delegate void MyDelegate(int num);
+    delegate void MyDelegate(int difficulty, float spawnRate);
     MyDelegate weDelegateYouToStartTheGame;
 
     void SetDifficulty()
     {
-        Debug.Log(gameObject.name + " was clicked");
+        //Debug.Log(gameObject.name + " was clicked");
+        Debug.Log(gameObject.name + " was clicked. " + "Difficulty: " + "Spawn Rate: " + spawnRate.spawnRate);
         weDelegateYouToStartTheGame = gameManager.StartGame; 
-        weDelegateYouToStartTheGame(difficulty);
+        weDelegateYouToStartTheGame(spawnRate.difficultyLevel, spawnRate.spawnRate);
     }
 }

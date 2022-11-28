@@ -187,16 +187,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 208250025}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.2021484, y: 3.7710016, z: -0.020924402}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -954.79785, y: -536.229, z: -0.020924402}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 827959328}
   - {fileID: 610112939}
   - {fileID: 922723973}
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_Father: {fileID: 822058475}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &222763691
 GameObject:
@@ -3238,7 +3238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1454802615}
-  difficulty: 2
+  spawnRate: {fileID: 11400000, guid: f7397cd78012c264b8969db84b563488, type: 2}
 --- !u!114 &373699331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4127,6 +4127,7 @@ RectTransform:
   - {fileID: 2803373}
   - {fileID: 1056742849}
   - {fileID: 222763692}
+  - {fileID: 208250026}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4273,7 +4274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1454802615}
-  difficulty: 3
+  spawnRate: {fileID: 11400000, guid: 3f5100a6c9a18604fa64e517fd61a93e, type: 2}
 --- !u!114 &858257735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4909,7 +4910,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1454802615}
-  difficulty: 1
+  spawnRate: {fileID: 11400000, guid: aac084d489cb2b34492695d8c4e4b89c, type: 2}
 --- !u!114 &1453387350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5224,7 +5225,7 @@ Transform:
   - {fileID: 4842634829420523858}
   - {fileID: 5500515522578253692}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1934835706
 GameObject:
@@ -5460,7 +5461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1454802615}
-  difficulty: 4
+  spawnRate: {fileID: 11400000, guid: 31f51c98e6f4fe0419cef72ab2161f1d, type: 2}
 --- !u!114 &2075658702
 MonoBehaviour:
   m_ObjectHideFlags: 0
