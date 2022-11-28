@@ -10,7 +10,7 @@ public class DifficultyButton : MonoBehaviour
     public GameManager gameManager;
     public SpawnRate spawnRate;
 
-    // Start is called before the first frame update
+    // Start is called before the first frame updates
     void Start()
     {
         //Debug.Log("Difficulty: " + "Spawn Rate: " + 1.0f / spawnRate.spawnRate);
