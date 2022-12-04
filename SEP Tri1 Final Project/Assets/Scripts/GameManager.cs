@@ -54,10 +54,20 @@ public class GameManager : MonoBehaviour
             _instance = this;
         }
     }
+    
+    public float testSpawnRate;
+    public int testLives;
+    public float testSpawnPosX;
+    public float testSpawnRangeY;
 
     // Start is called before the first frame update
     void Start()
     {
+        this.testSpawnRate = this.spawnRate;
+        this.testLives = this.lives;
+        this.testSpawnPosX = this.spawnPosX;
+        this.testSpawnRangeY = this.spawnRangeY;
+
         redExplosionParticle.Stop();
         greyExplosionParticle.Stop();
         pinkExplosionParticle.Stop();
