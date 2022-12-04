@@ -3786,7 +3786,7 @@ RectTransform:
   m_GameObject: {fileID: 668155749}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.2, y: 3.2, z: 1}
+  m_LocalScale: {x: 3.1, y: 3.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2803373}
@@ -3817,7 +3817,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Game Title
+  m_text: Bouncy Food
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -3880,7 +3880,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -32.129974, w: 0}
+  m_margin: {x: -9.194725, y: 0, z: -42.292572, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -5057,6 +5057,10 @@ MonoBehaviour:
   greyExplosionParticle: {fileID: 8348798659798511238}
   pinkExplosionParticle: {fileID: 5500515522578253693}
   goldExplosionParticle: {fileID: 4842634829420523859}
+  testSpawnRate: 0
+  testLives: 0
+  testSpawnPosX: 0
+  testSpawnRangeY: 0
 --- !u!1 &1522651542
 GameObject:
   m_ObjectHideFlags: 0
