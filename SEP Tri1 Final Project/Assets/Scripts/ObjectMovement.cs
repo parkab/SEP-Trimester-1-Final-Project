@@ -6,6 +6,9 @@ public class ObjectMovement : MonoBehaviour
 {
     private GameManager gameManager;
     public ParticleSystem redExplosionParticle;
+    private GameObject GameCamera;
+    private Shake shake;
+
 
     public int pointValue;
     private float speed = .1f;
@@ -21,6 +24,8 @@ public class ObjectMovement : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        GameCamera = GameObject.Find("Main Camera");
+        shake = GameCamera.GetComponent<Shake>();
 
         // determine which side the object spawned
         spawnLeft = transform.position.x < 0;
@@ -82,6 +87,7 @@ public class ObjectMovement : MonoBehaviour
 
                 Destroy(gameObject);
                 gameManager.UpdateLives();
+                shake.start = true;
             }
 
         }
