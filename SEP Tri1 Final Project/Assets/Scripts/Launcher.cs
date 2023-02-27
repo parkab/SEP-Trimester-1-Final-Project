@@ -9,7 +9,6 @@ public class Launcher : MonoBehaviour
     private IObjectPool<Rock> flyingPool;
 
     public Rock myRock;
-
     private GameManager gameManager;
     public ParticleSystem redExplosionParticle;
     private GameObject GameCamera;
@@ -39,19 +38,12 @@ public class Launcher : MonoBehaviour
     { 
         // determine which side object will spawn on
         randX = Random.Range(0, 2);
-        if (randX >= 1)
-        {
-            randX = 1;
-        }
-        else
-        {
-            randX = -1;
-        }
+        if (randX >= 1) { randX = 1; } else { randX = -1; }
 
         // determine which object will spawn and object spawn position
         Vector2 spawnPos = new Vector2(randX * spawnPosX, Random.Range(-spawnRangeY, spawnRangeY));
 
-        // spawn object
+        // OBJECT POOL RELEVANT! - spawn object 
         Rock thing = Instantiate(myRock, spawnPos, myRock.transform.rotation);
         thing.SetPool(flyingPool);
         return thing;
@@ -71,13 +63,5 @@ public class Launcher : MonoBehaviour
     private void DestroyFlying(Rock thing)
     {
         Destroy(thing.gameObject);
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            flyingPool?.Get();
-        }
     }
 }
